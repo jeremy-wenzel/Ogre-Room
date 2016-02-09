@@ -54,15 +54,12 @@ void Application::init()
 	// Create scene manager, render window, and camera
 	mSceneManager = mRoot->createSceneManager(ST_GENERIC);
 	mRenderWindow = mRoot->createRenderWindow(PROJECT_NAME, 640, 480, false, &params);
-	// mCamera = mSceneManager->createCamera("Main Camera");
 
 	mRoot->addFrameListener(this);
 	WindowEventUtilities::addWindowEventListener(mRenderWindow, this);
 	mRenderWindow->addListener(this);
 
-	// Add viewport
-	// Viewport * vp = mRenderWindow->addViewport(mCamera);
-	// mCamera->setAutoAspectRatio(true);
+	
 
 	try {
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation("/lusr/opt/ogre-1.9/share/OGRE/Media", "FileSystem");
@@ -79,14 +76,11 @@ void Application::init()
 
 	// Personal Code
 	try {
-		mSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 		setupCamera();
+		setupLight();
 		buildRoom();
 		buildBall();
 
-		Ogre::Light* light = mSceneManager->createLight("MainLight");
-		light->setPosition(20, 80, 50);
-		
 		// Set Random seed
 		std::srand(std::time(0));
 	} catch (Exception e) {
@@ -186,15 +180,22 @@ void Application::setupCamera() {
 	mCamera->setAutoAspectRatio(true);
 
 	// Set Position
-	mCamera->setPosition(Ogre::Vector3(200, 200, 1000));
+	mCamera->setPosition(Ogre::Vector3(200, 100, 0));
 	mCamera->lookAt(Ogre::Vector3(0,0,0));
 	mCamera->setNearClipDistance(5);
 }
 
+void Application::setupLight() {
+	//mSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+	Ogre::Light* light = mSceneManager->createLight("MainLight");
+	light->setType(Ogre::Light::LT_POINT);
+	light->setPosition(20, 80, 50);
+}
+
 void Application::checkForCollisions() {
-	static int dx = 0;
-	static int dy = 1;
-	static int dz = .5;
+	static int dx = 1;
+	static int dy = 2;
+	static int dz = 4;
 	static Ogre::Vector3 move = Ogre::Vector3(dx, dy, dz);
 	AxisAlignedBox ballBox = ballEntity->getWorldBoundingBox();
 

@@ -29,6 +29,7 @@ public:
 	void buildBall();
 	void buildOgreHead();
 	void setupCamera();
+	void setupLight();
 	void checkForCollisions();
 
 	Ogre::Root * mRoot;
