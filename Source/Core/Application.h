@@ -25,6 +25,7 @@ public:
 
 	virtual void init();
 
+	// Functions needed for gameplay
 	void buildRoom();
 	void buildBall();
 	void buildOgreHead();
@@ -32,12 +33,16 @@ public:
 	void setupLight();
 	void checkForCollisions();
 
+	// Root, RenderWindow, SceneManager, and Camera
 	Ogre::Root * mRoot;
 	Ogre::RenderWindow * mRenderWindow;
 	Ogre::SceneManager * mSceneManager;
 	Ogre::Camera * mCamera;
+	
+	// Ball node so we can keep track of it and move it
 	Ogre::SceneNode* ballNode;
 
+	// Entities need to 
 	Ogre::Entity* ballEntity;
 	Ogre::Entity* groundEntity;
 	Ogre::Entity* southWallEntity;
@@ -46,7 +51,7 @@ public:
 	Ogre::Entity* westWallEntity;
 	Ogre::Entity* ceilingEntity;
 
-	const Ogre::Real framePerSecond = 300;
+	const Ogre::Real framePerSecond = 100;
 	bool mRunning = true;
 
 	// Ogre::FrameListener

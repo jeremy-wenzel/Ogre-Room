@@ -193,9 +193,9 @@ void Application::setupLight() {
 }
 
 void Application::checkForCollisions() {
-	static int dx = 1;
-	static int dy = 2;
-	static int dz = 4;
+	static int dx = (rand() % 5) + 1;
+	static int dy = (rand() % 5) + 1;
+	static int dz = (rand() % 5) + 1;
 	static Ogre::Vector3 move = Ogre::Vector3(dx, dy, dz);
 	AxisAlignedBox ballBox = ballEntity->getWorldBoundingBox();
 
