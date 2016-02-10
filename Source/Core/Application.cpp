@@ -93,13 +93,11 @@ void Application::init()
 void Application::buildRoom() {
 	// Build Plane and planeMesh
 	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-	int length = 1000;
-	int width = 1000;
 	Ogre::MeshManager::getSingleton().createPlane(
 		"wall",
 		Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		plane,
-		length, width, 20, 20,
+		length, length, 20, 20,
 		true,
 		1, 5, 5,
 		Ogre::Vector3::UNIT_Z);
@@ -114,11 +112,11 @@ void Application::buildRoom() {
 
 	// Create wall sceneNodes
 	Ogre::SceneNode* groundNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
-	Ogre::SceneNode* northWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, 0, (length / 2)));
-	Ogre::SceneNode* southWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, 0, -(length / 2)));
-	Ogre::SceneNode* eastWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3((width / 2), 0, 0));
-	Ogre::SceneNode* westWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(-(width / 2), 0, 0));
-	Ogre::SceneNode* ceilingNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, (width / 2), 0));
+	Ogre::SceneNode* northWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, (length / 2), (length / 2)));
+	Ogre::SceneNode* southWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, (length / 2), -(length / 2)));
+	Ogre::SceneNode* eastWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3((length / 2), (length / 2), 0));
+	Ogre::SceneNode* westWallNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(-(length / 2), (length / 2), 0));
+	Ogre::SceneNode* ceilingNode = mSceneManager->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, (length), 0));
 
 	// Orient Walls
 	northWallNode->pitch(Ogre::Degree(-90));
@@ -143,12 +141,12 @@ void Application::buildRoom() {
 	westWallEntity->setMaterialName("Examples/Rockwall");
 	ceilingEntity->setMaterialName("Examples/Rockwall");
 
-	groundNode->showBoundingBox(true);
-	northWallNode->showBoundingBox(true);
-	southWallNode->showBoundingBox(true);
-	eastWallNode->showBoundingBox(true);
-	westWallNode->showBoundingBox(true);
-	ceilingNode->showBoundingBox(true);
+	// groundNode->showBoundingBox(true);
+	// northWallNode->showBoundingBox(true);
+	// southWallNode->showBoundingBox(true);
+	// eastWallNode->showBoundingBox(true);
+	// westWallNode->showBoundingBox(true);
+	// ceilingNode->showBoundingBox(true);
 }
 
 void Application::buildBall() {
@@ -162,7 +160,7 @@ void Application::buildBall() {
 	
 	// Attach the ball to the node and give it a material
 	ballNode->attachObject(ballEntity);
-	ballNode->showBoundingBox(true);
+	// ballNode->showBoundingBox(true);
 }
 
 void Application::buildOgreHead() {
@@ -180,7 +178,7 @@ void Application::setupCamera() {
 	mCamera->setAutoAspectRatio(true);
 
 	// Set Position
-	mCamera->setPosition(Ogre::Vector3(200, 100, 0));
+	mCamera->setPosition(Ogre::Vector3(0, (length / 2), 0));
 	mCamera->lookAt(Ogre::Vector3(0,0,0));
 	mCamera->setNearClipDistance(5);
 }

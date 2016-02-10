@@ -53,7 +53,7 @@ public:
 
 	const Ogre::Real framePerSecond = 100;
 	bool mRunning = true;
-
+	const int length = 1000;
 	// Ogre::FrameListener
 	//virtual bool frameEnded(const Ogre::FrameEvent &evt) override;
 	virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt) override;
