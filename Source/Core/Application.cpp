@@ -187,6 +187,7 @@ void Application::setupLight() {
 	//mSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 	Ogre::Light* light = mSceneManager->createLight("MainLight");
 	light->setType(Ogre::Light::LT_POINT);
+	light->setDiffuseColour(.6,.6,.6);
 	light->setPosition(20, 80, 50);
 }
 
