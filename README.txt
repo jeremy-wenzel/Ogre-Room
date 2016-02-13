@@ -6,7 +6,7 @@
 
 3. Run the following command "mkdir Build && cd Build/". This is where we will do the CMake business.
 
-4. Then run the following command "cmake -DOGRE=/lusr/opt/ogre-1.9/ ..". This will create all the dependencies needed for Ogre to be compiled with the project.
+4. Then run the following command "cmake -DOGRE_HOME=/lusr/opt/ogre-1.9/ ..". This will create all the dependencies needed for Ogre to be compiled with the project.
 
 5. Run the following comman "make". This will compile the code into an executable placed in Binaries/ titled "ProjectName"
 
