@@ -51,7 +51,7 @@ public:
 	Ogre::Entity* westWallEntity;
 	Ogre::Entity* ceilingEntity;
 
-	const Ogre::Real framePerSecond = 100;
+	const Ogre::Real ballSpeed = 100;
 	bool mRunning = true;
 	const int length = 1000;
 	// Ogre::FrameListener

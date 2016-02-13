@@ -1,0 +1,41 @@
+# Abstract Overview of Functionality
+
+The project creates a simple cube room with a single light and camera in the middle. The project then creates a ball and begins moving it in a random direction. Whenever there is a ball and wall collision then appropriate vector directions are switched.
+
+There is some code that was created by the TA Ronald for the set up of the room, but it has been altered to better suit the needs of the project.
+
+# The Cube Room (buildRoom())
+
+The room is built using a method called buildRoom() method. It begins by building a plane mesh using an ogre plane object. The mesh is then used to create 6 entities (because there are 6 surfaces on a cube). These 6 entities represent all the surfaces of the room. They are also stored in global variables. The reasoning for this is I needed a way to detect when the ball was bouncing of the surface of a wall. I know it isn't good practice to use global variables like this and I am continuing to find a way to not have to use a global variable.
+
+The 6 entities are then attached to 6 sceneNodes. The sceneNodes are then placed in such a way that it creates a cube. Lastly, I attach materials to each of the surfaces and the room is complete.
+
+# The ball (buildBall())
+
+The ball is a simple sphere mesh that is provided by default by Ogre. There is no material for the ball so it is just gray. It is placed in the middle of the room and intially has no speed or direction. That comes after everything has been setup.
+
+Like the surfaces of buildRoom(), the ball has two global variables, ballNode (the sceneNode for the ball) and ballEntity (the entity for the ball). The ballNode is used to move the ball and the ballEntity is to check if there is a collision with another wall. Again, I know it isn't great, but it gets the job done.
+
+# The camera and lighting ( respectively)
+
+The camera is placed in the exact middle of the room and tracks the ball as it moves. This causes the camera to turn and rotate accordingly as the ball moves and bounces off surfaces.
+
+The lighting is also placed in the exact middle of the room, though it is placed closer to the ground, unlike the camera or ball. There is no ambient light used in the project so all light comes from this light, which is a point light, spreading light in all directions. This makes it seems like there is no light in the corners of the ground surface, which shows that there is no ambient light.
+
+# Beginning the game
+
+After everything has been initallized and created, the game begins. This is done by the __ method in the ___ . This method creates 3 static variables: dx, dy, dz, which are going to be used to translate the ballNode. The camera is then set to look at the ball as it moves. If you look closesly at the __ method, there is a variable called "timer", which is used to keep track how much time there has been between frames. This is important because Ogre can run at different speeds on different computers and can cause issues if things are synced correctly. By using this "timer" variable, I am able to, with decent accuracy, determine when we need to translate ball. The amount of times is determined by __. This could be thought of as the frames per second. If you set __ to 60, there will be about 1/60 of a second (i.e. 60 fps) before the ball is moved and the appropriate frame is rendered. Be wary though. If you increase the ___ the ball speed will increase, so the more accurate title of the variable should be "how often to I want to move the ball".
+
+# Collision Detection
+
+The previous method also checks for collision detection. Using the wall entities created in the buildRoom() method, I use the ballEntity's worldBoundingBox to check if there is an intersection with the worldBoundingBox of each of the surfaces. If there is an intersection, I know there is a collision and can reverse direction by simply changing the appropriate vector. For example, if the ball hits the north wall (positive z-axis), I just negate dz (which is the z magnitude) and this changes the direction of the ball in the z-axis. This works as well if the ball hits the south wall (negatation of a negative gives you a positive). 
+
+# Problems I had with this project
+
+One of the biggest problems I had with this project was getting the resources to import properly. When I wasn't importing resources correctly, I would usually get a segfault or some exeception. I used a try catch, which caught these errors and allowed me to easily debug the problem.
+
+Another weird thing I encounted was using Entity::getBoundingBox which returns a bounding box in local coordinates. When checking if entities were intersecting, I would always get True because the local coordinates for the entities are the same which would cause me to get weird result. By using Entity::getWorldBoundingBox(), I was able to remedy the problem.
+
+# How to use the program
+
+You can't really "use" the program. You can't move the camera using the keyboard or mouse. The program does not take any input. The program simply demonstrates a ball bouncing off the walls of a cubic room.

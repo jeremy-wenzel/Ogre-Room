@@ -235,7 +235,7 @@ bool Application::frameRenderingQueued(const FrameEvent &evt)
 
 	if (timer < 0.0) {
 		checkForCollisions();
-		timer = 1.0 / framePerSecond;
+		timer = 1.0 / ballSpeed;
 	}
 	
 	return true;

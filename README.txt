@@ -1,0 +1,15 @@
+# Building the Executable
+
+1. project_1_jhw866 folder that contains the code and executable into some desired directory. The directory doesn't matter. This project is based of Ronald's OgreAppBase.
+
+2. CD into the project_1_jhw866 directory.
+
+3. Run the following command "mkdir Build && cd Build/". This is where we will do the CMake business.
+
+4. Then run the following command "cmake -DOGRE=/lusr/opt/ogre-1.9/ ..". This will create all the dependencies needed for Ogre to be compiled with the project.
+
+5. Run the following comman "make". This will compile the code into an executable placed in Binaries/ titled "ProjectName"
+
+6. To run the executable, run the following command "./Binaries/ProjectName"
+
+7. Wala!
