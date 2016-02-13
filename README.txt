@@ -13,3 +13,5 @@
 6. To run the executable, run the following command "./Binaries/ProjectName"
 
 7. Wala!
+
+8. There is also an executable of the project in the root of the directory called "ProjectName"
