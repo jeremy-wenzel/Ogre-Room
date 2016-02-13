@@ -24,7 +24,11 @@ The lighting is also placed in the exact middle of the room, though it is placed
 
 # Beginning the game
 
-After everything has been initallized and created, the game begins. This is done by the __ method in the ___ . This method creates 3 static variables: dx, dy, dz, which are going to be used to translate the ballNode. The camera is then set to look at the ball as it moves. If you look closesly at the __ method, there is a variable called "timer", which is used to keep track how much time there has been between frames. This is important because Ogre can run at different speeds on different computers and can cause issues if things are synced correctly. By using this "timer" variable, I am able to, with decent accuracy, determine when we need to translate ball. The amount of times is determined by __. This could be thought of as the frames per second. If you set __ to 60, there will be about 1/60 of a second (i.e. 60 fps) before the ball is moved and the appropriate frame is rendered. Be wary though. If you increase the ___ the ball speed will increase, so the more accurate title of the variable should be "how often to I want to move the ball".
+After everything has been initallized and created, the game begins. This is done by the checkForCollisions() method in frameRenderingQueued(). This method creates 3 static variables: dx, dy, dz, which are going to be used to translate the ballNode. The camera is then set to look at the ball as it moves. 
+
+If you look closesly at the checkForCollisions() method, there is a variable called "timer", which is used to keep track how much time there has been between frames. This is important because Ogre can run at different speeds on different computers and can cause issues if things are synced correctly. To make life easier, I created this "timer" variable so that we can easily move the ball.
+
+By using this "timer" variable, I am able to, with decent accuracy, determine when we need to translate ball. The amount of times is determined by ballSpeed. This could be thought of as the frames per second. If you set ballSpeed to 60, there will be about 1/60 of a second (i.e. 60 fps) before the ball is moved and the appropriate frame is rendered. Be wary though. If you increase the ballSpeed the ball speed will increase, so the more accurate title of the variable should be "how long do I want to wait before moving the ball".
 
 # Collision Detection
 

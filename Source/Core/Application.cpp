@@ -194,9 +194,10 @@ void Application::checkForCollisions() {
 	static int dx = (rand() % 5) + 1;
 	static int dy = (rand() % 5) + 1;
 	static int dz = (rand() % 5) + 1;
-	static Ogre::Vector3 move = Ogre::Vector3(dx, dy, dz);
-	AxisAlignedBox ballBox = ballEntity->getWorldBoundingBox();
 
+	static Ogre::Vector3 move = Ogre::Vector3(dx, dy, dz);
+
+	AxisAlignedBox ballBox = ballEntity->getWorldBoundingBox();
 	
 	if (ballBox.intersects(eastWallEntity->getWorldBoundingBox())
 			|| ballBox.intersects(westWallEntity->getWorldBoundingBox()))
