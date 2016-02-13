@@ -14,4 +14,4 @@
 
 7. Wala!
 
-8. There is also an executable of the project in the root of the directory called "ProjectName"
+8. There is also an executable of the project in the root of the directory called "ProjectName". The code for the project is located in "Source/Core"
