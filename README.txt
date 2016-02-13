@@ -1,6 +1,6 @@
 # Building the Executable
 
-1. Place the project_1_jhw866 folder that contains the code and executable into some desired directory. The directory doesn't matter. This project is based of Ronald's OgreAppBase.
+1. Place the project_1_jhw866 (may also be name project_1_jhw866-master) folder that contains the code and executable into some desired directory. The directory doesn't matter. This project is based of Ronald's OgreAppBase.
 
 2. CD into the project_1_jhw866 directory.
 
